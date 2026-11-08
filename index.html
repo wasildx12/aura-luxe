@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA LUXE — Curated Objects of Form & Function</title>
+  <meta name="description" content="Discover rare horology, spatial audio, bespoke leather, and sculptural living objects with tactile acrylic glass aesthetics and floating ambient design." />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Core Design System -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 3D Interactive Floating Objects Background Canvas -->
+  <canvas id="floating-canvas"></canvas>
+
+  <!-- Atmospheric Grain Filter -->
+  <div class="grain-overlay"></div>
+
+  <!-- Application Shell -->
+  <div class="app-container">
+
+    <!-- FLOATING ACRYLIC NAVBAR -->
+    <header class="site-header">
+      <nav class="nav-acrylic-bar">
+        
+        <!-- Brand Logo -->
+        <a href="#home" class="brand-logo">
+          <span class="brand-gem">✦</span>
+          <span>AURA LUXE</span>
+        </a>
+
+        <!-- Main Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#home" class="nav-link active" data-route="home"><i class="fas fa-home" style="margin-right: 6px; font-size: 0.8rem;"></i>Home</a></li>
+          <li><a href="#categories" class="nav-link" data-route="categories"><i class="fas fa-th-large" style="margin-right: 6px; font-size: 0.8rem;"></i>Categories</a></li>
+          <li><a href="#bestsellers" class="nav-link" data-route="bestsellers"><i class="fas fa-fire" style="margin-right: 6px; font-size: 0.8rem; color: var(--accent-gold);"></i>Best Sellers</a></li>
+          <li><a href="#contact" class="nav-link" data-route="contact"><i class="fas fa-envelope" style="margin-right: 6px; font-size: 0.8rem;"></i>Contact Us</a></li>
+          <li><a href="#social" class="nav-link" data-route="social"><i class="fab fa-instagram" style="margin-right: 6px; font-size: 0.85rem;"></i>Social Media</a></li>
+        </ul>
+
+        <!-- Action Items (Currency, Theme, Wishlist, Cart) -->
+        <div class="nav-actions">
+          
+          <!-- Currency Dropdown -->
+          <select id="currency-select" class="currency-select" title="Change Currency">
+            <option value="USD">USD ($)</option>
+            <option value="EUR">EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+          </select>
+
+          <!-- Theme Toggle (Obsidian Dark / Pearl Light) -->
+          <button id="theme-toggle-btn" class="btn-acrylic btn-acrylic-icon" title="Toggle Theme" aria-label="Toggle Theme">
+            <i class="fas fa-moon"></i>
+          </button>
+
+          <!-- Wishlist Indicator -->
+          <button class="btn-acrylic btn-acrylic-icon cart-btn-indicator" onclick="switchPage('categories')" title="View Wishlist">
+            <i class="far fa-heart"></i>
+            <span class="badge-count" id="wishlist-badge" style="display: none;">0</span>
+          </button>
+
+          <!-- Shopping Bag Button -->
+          <button id="cart-toggle-btn" class="btn-acrylic btn-acrylic-gold cart-btn-indicator">
+            <i class="fas fa-shopping-bag"></i>
+            <span style="font-size: 0.875rem; font-weight: 600;">Bag</span>
+            <span class="badge-count" id="cart-badge" style="display: none;">0</span>
+          </button>
+
+          <!-- Mobile Nav Toggle Hamburger -->
+          <button id="mobile-toggle" class="btn-acrylic btn-acrylic-icon mobile-nav-toggle" aria-label="Open Mobile Menu">
+            <i class="fas fa-bars"></i>
+          </button>
+
+        </div>
+      </nav>
+    </header>
+
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 1: HOME PAGE -->
+    <!-- ===================================================================== -->
+    <main id="view-home" class="page-view active-view">
+      
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulsing-dot"></span>
+            <span>2026 Private Collection • Limited Allocation Available</span>
+          </div>
+          <h1 class="hero-title">
+            The Intersection of Form, Light & Pure Precision
+          </h1>
+          <p class="hero-lead">
+            Curated objects designed to transcend the ordinary. From aerospace-grade titanium horology to spatial beryllium acoustics and artisanal scents.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#categories" class="btn-acrylic btn-acrylic-gold btn-acrylic-lg">
+              <i class="fas fa-compass"></i> Explore All Categories
+            </a>
+            <a href="#bestsellers" class="btn-acrylic btn-acrylic-lg">
+              <i class="fas fa-award"></i> View Best Sellers
+            </a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <div class="metric-num">100%</div>
+              <div class="metric-lbl">Certified Authentic</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num">4.9/5</div>
+              <div class="metric-lbl">Collector Satisfaction</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-num">30-Day</div>
+              <div class="metric-lbl">Complimentary Returns</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Acrylic Visual Showcase -->
+        <div class="hero-visual">
+          <div class="hero-card-acrylic">
+            <div class="hero-img-wrap">
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80" alt="Titanium Minimalist Chrono" />
+              <div class="hero-floating-pill">
+                <div>
+                  <div style="font-weight: 700; font-size: 0.95rem; color: #FFF;">Aura Chrono Titanium</div>
+                  <div style="font-size: 0.8rem; color: var(--accent-gold);">Edition 01 • Swiss Movement</div>
+                </div>
+                <button class="btn-acrylic btn-acrylic-gold btn-acrylic-sm" onclick="openQuickViewById('aura-time-01')">
+                  Quick View
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust Badges Bar -->
+      <section class="trust-badges-bar">
+        <div class="trust-item">
+          <div class="trust-icon-box"><i class="fas fa-plane-departure"></i></div>
+          <div>
+            <div class="trust-title">Global Insured Courier</div>
+            <div class="trust-desc">Complimentary on orders over $250</div>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon-box"><i class="fas fa-certificate"></i></div>
+          <div>
+            <div class="trust-title">Certified Craftsmanship</div>
+            <div class="trust-desc">Serial numbered certificate included</div>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon-box"><i class="fas fa-shield-alt"></i></div>
+          <div>
+            <div class="trust-title">30-Day Bespoke Guarantee</div>
+            <div class="trust-desc">Hassle-free worldwide returns</div>
+          </div>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon-box"><i class="fas fa-headset"></i></div>
+          <div>
+            <div class="trust-title">VIP Client Concierge</div>
+            <div class="trust-desc">Direct private consultation 24/7</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Masterpieces Grid -->
+      <section style="margin-bottom: 80px;">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-star"></i> Curated Spotlight</span>
+          <h2 class="section-title">Hand-Selected Creations</h2>
+          <p class="section-subtitle">
+            Each creation is engineered with rigorous material integrity and sculptural elegance.
+          </p>
+        </div>
+
+        <div class="products-grid" id="home-featured-grid">
+          <!-- Rendered dynamically by app.js -->
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="#categories" class="btn-acrylic btn-acrylic-gold btn-acrylic-lg">
+            View All 12 Curated Objects <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- Testimonials Section -->
+      <section style="margin-bottom: 70px;">
+        <div class="section-header">
+          <span class="section-tag"><i class="fas fa-quote-left"></i> Collector Impressions</span>
+          <h2 class="section-title">Praised by Designers & Connoisseurs</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+          <div class="contact-card-acrylic" style="padding: 28px;">
+            <div style="color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 14px;">★★★★★</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+              "The acrylic button cues and design cohesion are breathtaking. When my titanium timepiece arrived in the frosted vault packaging, I knew Aura was operating on a different echelon."
+            </p>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent-gold);" alt="Alexander Wright" />
+              <div>
+                <div style="font-weight: 700; font-size: 0.95rem;">Alexander Wright</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Architectural Director • London</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card-acrylic" style="padding: 28px;">
+            <div style="color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 14px;">★★★★★</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+              "The soundstage on the Lumina spatial headphones rivals studio monitors double their price. Plus, the acrylic and lambskin blend is tactile perfection."
+            </p>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent-gold);" alt="Sophie Laurent" />
+              <div>
+                <div style="font-weight: 700; font-size: 0.95rem;">Sophie Laurent</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Sound Designer • Paris</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card-acrylic" style="padding: 28px;">
+            <div style="color: var(--accent-gold); font-size: 1.1rem; margin-bottom: 14px;">★★★★★</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+              "Finding a luxury boutique that treats digital experience and tactile physical craftsmanship with equal reverence is exceptionally rare. Aura is now my default gifting partner."
+            </p>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 1px solid var(--accent-gold);" alt="Kenji Sato" />
+              <div>
+                <div style="font-weight: 700; font-size: 0.95rem;">Kenji Sato</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted);">Creative Technologist • Tokyo</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIP Club Newsletter Bar -->
+      <section style="background: linear-gradient(135deg, rgba(229, 184, 105, 0.12) 0%, rgba(13, 17, 23, 0.9) 100%); border: 1px solid rgba(229, 184, 105, 0.25); border-radius: var(--radius-lg); padding: 40px; text-align: center; margin-bottom: 40px;">
+        <span class="section-tag" style="margin-bottom: 10px;"><i class="fas fa-envelope"></i> Private Guild</span>
+        <h3 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 10px;">Receive Private Batch Allocations</h3>
+        <p style="color: var(--text-secondary); max-width: 580px; margin: 0 auto 24px auto; font-size: 0.95rem;">
+          Subscribe to gain 24-hour priority access to limited edition drops, secret studio archives, and private previews.
+        </p>
+        <form style="display: flex; justify-content: center; gap: 10px; max-width: 520px; margin: 0 auto; flex-wrap: wrap;" onsubmit="event.preventDefault(); showToast('Welcome to the Private Guild! Check your inbox for your 10% pass.', 'success'); this.reset();">
+          <input type="email" required placeholder="Enter your private email address..." class="form-control-acrylic" style="flex: 1; min-width: 260px;" />
+          <button type="submit" class="btn-acrylic btn-acrylic-gold">
+            <i class="fas fa-paper-plane"></i> Join Guild
+          </button>
+        </form>
+      </section>
+
+    </main>
+
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 2: CATEGORIES PAGE -->
+    <!-- ===================================================================== -->
+    <main id="view-categories" class="page-view">
+      
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-th-large"></i> Boutique Portfolios</span>
+        <h1 class="section-title">Explore by Curated Category</h1>
+        <p class="section-subtitle">
+          Filter through our focused disciplines — from precision horology and acoustic engineering to Tuscan leather and scent art.
+        </p>
+      </div>
+
+      <!-- Spotlight Category Cards Banner -->
+      <div class="category-spotlight-cards">
+        <div class="spotlight-card" onclick="filterByCategory('timepieces')">
+          <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80" alt="Horology" />
+          <div class="spotlight-overlay">
+            <h3>Timepieces & Horology</h3>
+            <p>Automatic Swiss Calibres & Titanium</p>
+          </div>
+        </div>
+        <div class="spotlight-card" onclick="filterByCategory('audio')">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80" alt="Audio" />
+          <div class="spotlight-overlay">
+            <h3>Spatial Audio & Tech</h3>
+            <p>Lossless Beryllium Drivers & Acrylic Turntables</p>
+          </div>
+        </div>
+        <div class="spotlight-card" onclick="filterByCategory('living')">
+          <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=700&q=80" alt="Living" />
+          <div class="spotlight-overlay">
+            <h3>Curated Living & Ceramics</h3>
+            <p>Sculptural Glassware & Mist Lighting</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter Chips -->
+      <div class="category-filter-chips" id="category-filter-chips">
+        <button class="category-chip active" data-category="all" onclick="filterByCategory('all')">
+          <i class="fas fa-sparkles" style="margin-right: 6px;"></i> All Creations
+        </button>
+        <button class="category-chip" data-category="timepieces" onclick="filterByCategory('timepieces')">
+          <i class="fas fa-clock" style="margin-right: 6px;"></i> Timepieces
+        </button>
+        <button class="category-chip" data-category="audio" onclick="filterByCategory('audio')">
+          <i class="fas fa-headphones" style="margin-right: 6px;"></i> Spatial Audio
+        </button>
+        <button class="category-chip" data-category="leather" onclick="filterByCategory('leather')">
+          <i class="fas fa-briefcase" style="margin-right: 6px;"></i> Bespoke Leather
+        </button>
+        <button class="category-chip" data-category="living" onclick="filterByCategory('living')">
+          <i class="fas fa-couch" style="margin-right: 6px;"></i> Curated Living
+        </button>
+        <button class="category-chip" data-category="scents" onclick="filterByCategory('scents')">
+          <i class="fas fa-fire-alt" style="margin-right: 6px;"></i> Artisanal Scents
+        </button>
+      </div>
+
+      <!-- Filter & Search Toolbar -->
+      <div class="filter-toolbar">
+        <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
+          <i class="fas fa-search" style="color: var(--text-muted);"></i>
+          <input 
+            type="text" 
+            id="category-search-input" 
+            class="search-input-acrylic" 
+            placeholder="Search creations by name, material, or keyword..." 
+            oninput="handleCategorySearch(this.value)"
+          />
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="font-size: 0.85rem; color: var(--text-secondary);">Sort By:</span>
+          <select id="category-sort-select" class="currency-select" onchange="renderCategoriesView()">
+            <option value="featured">Curated Order</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Category Products Grid -->
+      <div class="products-grid" id="categories-product-grid">
+        <!-- Rendered dynamically -->
+      </div>
+
+    </main>
+
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 3: BEST SELLERS PAGE -->
+    <!-- ===================================================================== -->
+    <main id="view-bestsellers" class="page-view">
+      
+      <!-- Bestseller Hero Banner with Countdown -->
+      <div class="bestseller-hero-banner">
+        <div>
+          <span class="section-tag" style="background: rgba(229, 184, 105, 0.2);"><i class="fas fa-trophy"></i> Verified Hall of Fame</span>
+          <h1 style="font-size: 2.2rem; font-weight: 800; margin: 10px 0 8px 0;">Our Most Coveted Creations</h1>
+          <p style="color: var(--text-secondary); max-width: 500px; font-size: 0.95rem;">
+            Ranked by collector acquisition and critical acclaim. Handcrafted in numbered batches with low allocation limits.
+          </p>
+        </div>
+
+        <!-- Live Flash Drop Countdown -->
+        <div>
+          <div style="font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-gold); margin-bottom: 8px; text-align: right;">
+            <i class="fas fa-stopwatch" style="margin-right: 4px;"></i> Current Allocation Window
+          </div>
+          <div class="countdown-box">
+            <div class="timer-block">
+              <div class="timer-num" id="timer-hours">05</div>
+              <div class="timer-lbl">Hours</div>
+            </div>
+            <span style="font-weight: 800; color: var(--accent-gold); font-size: 1.4rem;">:</span>
+            <div class="timer-block">
+              <div class="timer-num" id="timer-minutes">42</div>
+              <div class="timer-lbl">Mins</div>
+            </div>
+            <span style="font-weight: 800; color: var(--accent-gold); font-size: 1.4rem;">:</span>
+            <div class="timer-block">
+              <div class="timer-num" id="timer-seconds">18</div>
+              <div class="timer-lbl">Secs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ranked Best Sellers Grid -->
+      <div class="products-grid" id="bestsellers-grid">
+        <!-- Rendered dynamically by app.js with rank badges & stock counters -->
+      </div>
+
+      <!-- Collector Guarantee Highlight -->
+      <div style="margin-top: 60px; padding: 32px; border-radius: var(--radius-lg); background: var(--bg-card); border: 1px solid var(--border-medium); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+        <div>
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Need Personal Gifting Guidance?</h3>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">Our private horology and design advisors provide tailored recommendations with complimentary calligraphy gift packaging.</p>
+        </div>
+        <a href="#contact" class="btn-acrylic btn-acrylic-gold">
+          <i class="fas fa-comment-alt"></i> Speak to a Concierge
+        </a>
+      </div>
+
+    </main>
+
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 4: CONTACT US PAGE -->
+    <!-- ===================================================================== -->
+    <main id="view-contact" class="page-view">
+      
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-concierge-bell"></i> Private Concierge</span>
+        <h1 class="section-title">Direct Client Services & Studios</h1>
+        <p class="section-subtitle">
+          Whether inquiring about a bespoke watch order, international delivery, or private showroom visits in London, Paris, Tokyo, or New York.
+        </p>
+      </div>
+
+      <div class="contact-layout">
+        
+        <!-- Interactive Contact Form -->
+        <div class="contact-card-acrylic">
+          <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">Send a Secure Message</h2>
+          <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 24px;">
+            A senior client advisor will review your correspondence and respond within 2 business hours.
+          </p>
+
+          <form id="contact-form">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Your Full Name *</label>
+              <input type="text" id="contact-name" class="form-control-acrylic" required placeholder="Lord Sterling or Elena Rostova" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Email Address *</label>
+              <input type="email" id="contact-email" class="form-control-acrylic" required placeholder="sterling@residence.com" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-topic">Inquiry Nature</label>
+              <select id="contact-topic" class="form-control-acrylic">
+                <option value="bespoke">Bespoke Commission / Custom Horology</option>
+                <option value="order">Order Tracking & White-Glove Courier</option>
+                <option value="showroom">Private Showroom Appointment</option>
+                <option value="corporate">Executive Corporate & Gifting Orders</option>
+                <option value="press">Press, Editorial & Media Inquiries</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message or Specifications *</label>
+              <textarea id="contact-message" class="form-control-acrylic" required placeholder="Please describe your inquiry or custom specifications..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-acrylic btn-acrylic-gold btn-acrylic-lg" style="width: 100%;">
+              <i class="fas fa-paper-plane"></i> Transmit to Concierge Desk
+            </button>
+          </form>
+        </div>
+
+        <!-- Global Studios & Direct Channels -->
+        <div>
+          <div class="contact-card-acrylic" style="margin-bottom: 24px;">
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px;">Global Atelier Locations</h3>
+            <p style="color: var(--text-secondary); font-size: 0.85rem;">Private appointments available by invitation and confirmed booking.</p>
+
+            <div class="studios-grid">
+              <div class="studio-item">
+                <div class="studio-city">New York</div>
+                <div class="studio-tz"><i class="far fa-clock"></i> EST (UTC-5)</div>
+                <div class="studio-address">742 Fifth Avenue, Suite 19B, Manhattan</div>
+              </div>
+
+              <div class="studio-item">
+                <div class="studio-city">London</div>
+                <div class="studio-tz"><i class="far fa-clock"></i> GMT (UTC+0)</div>
+                <div class="studio-address">14 Old Bond Street, Mayfair</div>
+              </div>
+
+              <div class="studio-item">
+                <div class="studio-city">Paris</div>
+                <div class="studio-tz"><i class="far fa-clock"></i> CET (UTC+1)</div>
+                <div class="studio-address">28 Rue du Faubourg Saint-Honoré, 8e</div>
+              </div>
+
+              <div class="studio-item">
+                <div class="studio-city">Tokyo</div>
+                <div class="studio-tz"><i class="far fa-clock"></i> JST (UTC+9)</div>
+                <div class="studio-address">5-7-22 Minami-Aoyama, Minato-ku</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instant Channels Card -->
+          <div class="contact-card-acrylic">
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 14px;">Direct Concierge Hotlines</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.9rem;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="trust-icon-box" style="width: 38px; height: 38px;"><i class="fab fa-whatsapp"></i></div>
+                <div>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Encrypted WhatsApp Concierge</div>
+                  <div style="font-weight: 600; color: #FFF;">+1 (800) 782-AURA</div>
+                </div>
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="trust-icon-box" style="width: 38px; height: 38px;"><i class="fas fa-envelope"></i></div>
+                <div>
+                  <div style="font-size: 0.78rem; color: var(--text-muted);">Dedicated Client Email</div>
+                  <div style="font-weight: 600; color: #FFF;">concierge@aura-luxe.com</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ Accordion -->
+      <div class="faq-section">
+        <div class="section-header" style="margin-bottom: 30px;">
+          <h2 style="font-size: 1.75rem; font-weight: 700;">Frequently Answered Inquiries</h2>
+        </div>
+
+        <div class="faq-item open">
+          <div class="faq-question">
+            <span>What courier service is utilized for global shipments?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            All shipments are dispatched via tamper-sealed armored express courier (DHL Express Worldwide or FedEx International Priority) with full insurance coverage, signature verification, and real-time biometric GPS tracking.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Are timepieces and audio devices covered under warranty?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            Every Aura creation carries a comprehensive 3-year international warranty covering all mechanical movements, driver components, and craftsmanship. In addition, lifetime servicing and regulation are available at any of our flagship atelier locations.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>How does the 30-Day Bespoke Guarantee work?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            If any object does not completely fulfill your aesthetic or tactile expectations, notify our concierge within 30 days of receipt. We will dispatch a complimentary courier pickup from your residence and process a complete refund or exchange.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Can I request bespoke engravings or customized finishes?</span>
+            <i class="fas fa-chevron-down faq-icon"></i>
+          </div>
+          <div class="faq-answer">
+            Yes. We offer diamond-drag micro-engraving for titanium casebacks and hot-foil personalization for Tuscan leather goods. Simply contact our concierge desk prior to ordering.
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+
+    <!-- ===================================================================== -->
+    <!-- VIEW 5: OUR SOCIAL MEDIA PAGE -->
+    <!-- ===================================================================== -->
+    <main id="view-social" class="page-view">
+      
+      <div class="section-header">
+        <span class="section-tag"><i class="fab fa-instagram"></i> Digital Sanctuary</span>
+        <h1 class="section-title">The Global Aura Community</h1>
+        <p class="section-subtitle">
+          Tag <strong>#AuraLuxe</strong> or <strong>@aura.lifestyle</strong> on Instagram and TikTok to be showcased in our global collector feed. Tap any post below to directly acquire the featured piece.
+        </p>
+      </div>
+
+      <!-- Live Community Metrics -->
+      <div class="social-stats-bar">
+        <div class="social-stat-card">
+          <div class="social-stat-num">185K+</div>
+          <div class="social-stat-lbl"><i class="fab fa-instagram" style="color: var(--accent-gold);"></i> Instagram Followers</div>
+        </div>
+        <div class="social-stat-card">
+          <div class="social-stat-num">4.9 / 5</div>
+          <div class="social-stat-lbl"><i class="fas fa-star" style="color: var(--accent-gold);"></i> Collector Rating</div>
+        </div>
+        <div class="social-stat-card">
+          <div class="social-stat-num">50K+</div>
+          <div class="social-stat-lbl"><i class="fas fa-users" style="color: var(--accent-gold);"></i> Guild Members</div>
+        </div>
+        <div class="social-stat-card">
+          <div class="social-stat-num">120+</div>
+          <div class="social-stat-lbl"><i class="fas fa-globe-americas" style="color: var(--accent-gold);"></i> Countries Reached</div>
+        </div>
+      </div>
+
+      <!-- Interactive Shoppable Social Grid -->
+      <div class="social-feed-grid" id="social-feed-grid">
+        <!-- Rendered dynamically by app.js with instant shop buttons -->
+      </div>
+
+      <!-- Follow Us Channels Outlink Cards -->
+      <div class="social-channels-banner">
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="channel-card-acrylic">
+          <i class="fab fa-instagram channel-icon" style="color: #E1306C;"></i>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Instagram</h4>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 16px;">@aura.lifestyle • Daily aesthetics</p>
+          <span class="btn-acrylic btn-acrylic-sm">Follow Page</span>
+        </a>
+
+        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="channel-card-acrylic">
+          <i class="fab fa-tiktok channel-icon" style="color: #25F4EE;"></i>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">TikTok</h4>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 16px;">@auraluxe • Unboxing rituals</p>
+          <span class="btn-acrylic btn-acrylic-sm">Follow Page</span>
+        </a>
+
+        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="channel-card-acrylic">
+          <i class="fab fa-youtube channel-icon" style="color: #FF0000;"></i>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">YouTube</h4>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 16px;">@AuraLiving • Documentary shorts</p>
+          <span class="btn-acrylic btn-acrylic-sm">Subscribe</span>
+        </a>
+
+        <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="channel-card-acrylic">
+          <i class="fab fa-pinterest channel-icon" style="color: #E60023;"></i>
+          <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 4px;">Pinterest</h4>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 16px;">@auracollective • Moodboards</p>
+          <span class="btn-acrylic btn-acrylic-sm">Explore Boards</span>
+        </a>
+      </div>
+
+    </main>
+
+
+    <!-- ===================================================================== -->
+    <!-- SLIDE-OVER ACRYLIC CART DRAWER -->
+    <!-- ===================================================================== -->
+    <div class="cart-overlay" id="cart-overlay">
+      <aside class="cart-drawer-acrylic">
+        
+        <!-- Cart Header -->
+        <div class="cart-drawer-header">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <i class="fas fa-shopping-bag" style="color: var(--accent-gold); font-size: 1.2rem;"></i>
+            <h3 style="font-size: 1.2rem; font-weight: 700;">Your Shopping Bag</h3>
+          </div>
+          <button class="btn-acrylic btn-acrylic-icon" id="cart-close-btn" title="Close Bag">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <!-- Free Shipping Progress -->
+        <div class="cart-free-shipping-bar">
+          <div id="shipping-bar-msg">Add <strong>$110</strong> more for Free Global Courier</div>
+          <div class="shipping-progress">
+            <div class="shipping-progress-fill" id="shipping-bar-fill"></div>
+          </div>
+        </div>
+
+        <!-- Items List Scroll Area -->
+        <div class="cart-items-list" id="cart-items-list">
+          <!-- Rendered dynamically -->
+        </div>
+
+        <!-- Cart Footer -->
+        <div class="cart-drawer-footer">
+          <!-- Promo Code Bar -->
+          <div class="promo-row">
+            <input type="text" id="promo-code-input" class="form-control-acrylic" placeholder="Promo code (Try AURA10)" style="font-size: 0.85rem;" />
+            <button class="btn-acrylic btn-acrylic-sm" id="apply-promo-btn">Apply</button>
+          </div>
+
+          <div class="cart-summary-line">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">$0</span>
+          </div>
+
+          <div class="cart-summary-line" id="cart-discount-row" style="display: none; color: var(--accent-gold);">
+            <span>Privileged Discount</span>
+            <span id="cart-discount-val">-$0</span>
+          </div>
+
+          <div class="cart-summary-line">
+            <span>Insured Courier</span>
+            <span id="cart-shipping-val">Complimentary</span>
+          </div>
+
+          <div class="cart-summary-line total">
+            <span>Estimated Total</span>
+            <span id="cart-total" style="color: var(--accent-gold);">$0</span>
+          </div>
+
+          <button class="btn-acrylic btn-acrylic-gold btn-acrylic-lg" id="cart-checkout-btn" style="width: 100%; margin-top: 14px;">
+            <i class="fas fa-lock" style="margin-right: 6px;"></i> Secure Express Checkout
+          </button>
+        </div>
+
+      </aside>
+    </div>
+
+
+    <!-- ===================================================================== -->
+    <!-- QUICK VIEW MODAL -->
+    <!-- ===================================================================== -->
+    <div class="modal-backdrop" id="quickview-modal">
+      <div class="modal-card-acrylic">
+        <button class="btn-acrylic btn-acrylic-icon modal-close-btn" title="Close">
+          <i class="fas fa-times"></i>
+        </button>
+        <div id="quickview-modal-body">
+          <!-- Rendered dynamically by openQuickViewById() -->
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ===================================================================== -->
+    <!-- CHECKOUT MODAL -->
+    <!-- ===================================================================== -->
+    <div class="modal-backdrop" id="checkout-modal">
+      <div class="modal-card-acrylic" style="max-width: 600px;">
+        <button class="btn-acrylic btn-acrylic-icon modal-close-btn" title="Close">
+          <i class="fas fa-times"></i>
+        </button>
+        <div id="checkout-modal-body">
+          <h2 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 6px;">
+            <i class="fas fa-shield-alt" style="color: var(--accent-gold); margin-right: 8px;"></i>
+            Secure Checkout
+          </h2>
+          <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 20px;">
+            256-Bit SSL Encrypted Transaction. White-glove insured delivery.
+          </p>
+
+          <!-- Order Summary Widget -->
+          <div id="checkout-order-summary"></div>
+
+          <!-- Checkout Form -->
+          <form onsubmit="completeCheckoutSimulation(event)">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" required class="form-control-acrylic" placeholder="Arthur Pendelton" value="Arthur Pendelton" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Delivery Address</label>
+              <input type="text" required class="form-control-acrylic" placeholder="45 Park Avenue, Apt 12A, New York, NY" value="45 Park Avenue, Apt 12A, New York, NY" />
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-bottom: 20px;">
+              <div>
+                <label class="form-label">Card Number (Simulation)</label>
+                <input type="text" required class="form-control-acrylic" placeholder="4242 •••• •••• 4242" value="•••• •••• •••• 8821" />
+              </div>
+              <div>
+                <label class="form-label">Expiry / CVC</label>
+                <input type="text" required class="form-control-acrylic" placeholder="11/28 889" value="08/29 440" />
+              </div>
+            </div>
+
+            <button type="submit" class="btn-acrylic btn-acrylic-emerald btn-acrylic-lg" style="width: 100%;">
+              <i class="fas fa-lock"></i> Authorize & Complete Acquisition
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ===================================================================== -->
+    <!-- TOAST NOTIFICATIONS STACK -->
+    <!-- ===================================================================== -->
+    <div class="toast-container" id="toast-container"></div>
+
+
+    <!-- ===================================================================== -->
+    <!-- FOOTER -->
+    <!-- ===================================================================== -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        
+        <div class="footer-brand">
+          <a href="#home" class="brand-logo" style="margin-bottom: 14px;">
+            <span class="brand-gem">✦</span>
+            <span>AURA LUXE</span>
+          </a>
+          <p>
+            An independent design house crafting precision horology, spatial acoustic systems, Tuscan leather, and ambient living objects with tactile acrylic glass aesthetics.
+          </p>
+          <div style="display: flex; gap: 10px;">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-acrylic btn-acrylic-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" class="btn-acrylic btn-acrylic-icon" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="btn-acrylic btn-acrylic-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="btn-acrylic btn-acrylic-icon" title="X"><i class="fab fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Boutique</h4>
+          <ul class="footer-links">
+            <li><a href="#categories" onclick="filterByCategory('timepieces')">Timepieces & Horology</a></li>
+            <li><a href="#categories" onclick="filterByCategory('audio')">Spatial Audio & Sound</a></li>
+            <li><a href="#categories" onclick="filterByCategory('leather')">Bespoke Tuscan Leather</a></li>
+            <li><a href="#categories" onclick="filterByCategory('living')">Sculptural Living & Lighting</a></li>
+            <li><a href="#categories" onclick="filterByCategory('scents')">Artisanal Scents & Candles</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home Sanctuary</a></li>
+            <li><a href="#categories">All Categories</a></li>
+            <li><a href="#bestsellers">Top Best Sellers</a></li>
+            <li><a href="#contact">Contact Concierge</a></li>
+            <li><a href="#social">Our Social Community</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Concierge & Trust</h4>
+          <ul class="footer-links">
+            <li><a href="#contact">Book Atelier Visit</a></li>
+            <li><a href="#contact">Insured Courier Tracking</a></li>
+            <li><a href="#contact">30-Day Bespoke Guarantee</a></li>
+            <li><a href="#contact">Certificates of Authenticity</a></li>
+            <li><a href="#contact">Privacy & Vault Security</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 AURA LUXE DESIGN HOUSE INC. All rights reserved. Precision Craftsmanship & Tactile Glassmorphism.
+        </div>
+        <div style="display: flex; gap: 16px; font-size: 1.1rem; color: var(--text-muted);">
+          <i class="fab fa-cc-visa" title="Visa"></i>
+          <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fab fa-cc-amex" title="American Express"></i>
+          <i class="fab fa-apple-pay" title="Apple Pay"></i>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Inline Helper for Category Filtering from DOM -->
+  <script>
+    function filterByCategory(category) {
+      if (window.AppState) {
+        window.AppState.activeCategory = category;
+        window.AppState.searchQuery = '';
+        const searchInput = document.getElementById('category-search-input');
+        if (searchInput) searchInput.value = '';
+        
+        document.querySelectorAll('.category-chip').forEach(c => {
+          c.classList.toggle('active', c.getAttribute('data-category') === category);
+        });
+
+        if (window.AppState.currentRoute !== 'categories') {
+          switchPage('categories');
+        } else {
+          renderCategoriesView();
+        }
+      }
+    }
+
+    function handleCategorySearch(query) {
+      if (window.AppState) {
+        window.AppState.searchQuery = query;
+        renderCategoriesView();
+      }
+    }
+  </script>
+
+  <!-- Application Logic Scripts -->
+  <script src="products-data.js"></script>
+  <script src="floating-background.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
